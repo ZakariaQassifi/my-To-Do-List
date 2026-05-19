@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My To Do List - Blue Theme</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="top-navbar">
+  <h1><i class="fa-solid fa-square-check"></i> My To Do List</h1>
+
+  <div class="top-icons">
+    <i class="fa-solid fa-moon" onclick="toggleDarkMode()" style="cursor:pointer"></i>
+
+    <i class="fa-solid fa-plus"
+       onclick="showInput()"
+       style="cursor:pointer"
+       title="Add Task"></i>
+    <i class="fa-solid fa-circle-info"></i>
+
+    <i class="fa-solid fa-bell"></i>
+  </div>
+</header>
+
+<div class="page-container">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="search-container">
+      <div class="search-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search tasks..."
+          oninput="renderTasks()">
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="nav-item active"
+         id="filter-all"
+         onclick="setFilter('all')">
+
+      <div class="nav-left">
+        <i class="fa-solid fa-inbox" style="color:#246fe0"></i>
+        <span>Inbox</span>
+      </div>
+
+      <div class="task-count" id="count-all">0</div>
+    </div>
+
+    <div class="nav-item"
+         id="filter-active"
+         onclick="setFilter('active')">
+
+      <div class="nav-left">
+        <i class="fa-regular fa-circle-dot" style="color:#058527"></i>
+        <span>Not Done</span>
+      </div>
+
+      <div class="task-count" id="count-active">0</div>
+    </div>
+
+    <div class="nav-item"
+         id="filter-done"
+         onclick="setFilter('done')">
+
+      <div class="nav-left">
+        <i class="fa-solid fa-check-double" style="color:#692ec2"></i>
+        <span>Done</span>
+      </div>
+
+      <div class="task-count" id="count-done">0</div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="sidebar-footer">
+      <p>Powered by Zakaria Qassifi</p>
+
+      <a href="https://github.com/ZakariaQassifi"
+         target="_blank"
+         class="github-btn">
+
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </footer>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <div class="header-row">
+      <h1 id="view-title">Inbox</h1>
+
+      <div class="stats" id="stats">
+        0 Tasks
+      </div>
+    </div>
+
+    <ul id="task-list"></ul>
+
+    <!-- ADD BUTTON -->
+    <div class="add-task-trigger"
+         id="add-trigger"
+         onclick="showInput()">
+
+      <i class="fa-solid fa-circle-plus"></i>
+      Add task
+    </div>
+
+    <!-- INPUT -->
+    <div class="input-area" id="input-area">
+
+      <input type="text"
+             id="task-input"
+             placeholder="What needs to be done?">
+
+      <input type="date"
+             id="task-deadline">
+
+      <select id="task-priority">
+        <option value="low">Low Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="high">High Priority</option>
+      </select>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button
+          style="background:none; border:none; cursor:pointer; color:#666;"
+          onclick="hideInput()">
+
+          Cancel
+        </button>
+
+        <button class="btn-save"
+                onclick="addTask()">
+
+          Add task
+        </button>
+      </div>
+    </div>
+
+    <!-- EMPTY -->
+    <div class="empty-state" id="empty-state">
+      <p style="color:#777;">
+        All caught up! No tasks found.
+      </p>
+    </div>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
